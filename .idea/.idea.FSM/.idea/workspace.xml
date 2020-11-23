@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c320375d-bcd9-405a-88e1-b3bf3e9f0468" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GotoFileConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name=".NET Project Settings" />
+      <filtered-out-file-type name="AsmDef" />
+      <filtered-out-file-type name="Asp" />
+      <filtered-out-file-type name="AspectJ" />
+      <filtered-out-file-type name="Asxx" />
+      <filtered-out-file-type name="Blazor" />
+      <filtered-out-file-type name="C++" />
+      <filtered-out-file-type name="Config" />
+      <filtered-out-file-type name="Csproj" />
+      <filtered-out-file-type name="CSS" />
+      <filtered-out-file-type name="Cucumber" />
+      <filtered-out-file-type name="Dictionary" />
+      <filtered-out-file-type name="Dockerfile" />
+      <filtered-out-file-type name="DTD" />
+      <filtered-out-file-type name="EditorConfig" />
+      <filtered-out-file-type name="Enforced Plain Text" />
+      <filtered-out-file-type name="Erlang" />
+      <filtered-out-file-type name="Filtered Solution File" />
+      <filtered-out-file-type name="Fsproj" />
+      <filtered-out-file-type name="Handlebars/Mustache" />
+      <filtered-out-file-type name="Haskell" />
+      <filtered-out-file-type name="HTML" />
+      <filtered-out-file-type name="IDEA Backend File" />
+      <filtered-out-file-type name="IDEA_MODULE" />
+      <filtered-out-file-type name="IDEA_PROJECT" />
+      <filtered-out-file-type name="IDEA_WORKSPACE" />
+      <filtered-out-file-type name="IDL" />
+      <filtered-out-file-type name="IgnoreLang file" />
+      <filtered-out-file-type name="IL" />
+      <filtered-out-file-type name="IntegrationPerformanceTest" />
+      <filtered-out-file-type name="JavaFX" />
+      <filtered-out-file-type name="JavaScript" />
+      <filtered-out-file-type name="JQL" />
+      <filtered-out-file-type name="JSON" />
+      <filtered-out-file-type name="JSON5" />
+      <filtered-out-file-type name="JSP" />
+      <filtered-out-file-type name="Markdown" />
+      <filtered-out-file-type name="MsBuild targets file" />
+      <filtered-out-file-type name="PATCH" />
+      <filtered-out-file-type name="Perl" />
+      <filtered-out-file-type name="PHP" />
+      <filtered-out-file-type name="PLAIN_TEXT" />
+      <filtered-out-file-type name="Project file" />
+      <filtered-out-file-type name="Project file properties" />
+      <filtered-out-file-type name="Properties" />
+      <filtered-out-file-type name="Publish Profile file" />
+      <filtered-out-file-type name="Razor" />
+      <filtered-out-file-type name="RegExp" />
+      <filtered-out-file-type name="Resources" />
+      <filtered-out-file-type name="RNG Compact" />
+      <filtered-out-file-type name="RuleSet" />
+      <filtered-out-file-type name="Scratch" />
+      <filtered-out-file-type name="Shproj" />
+      <filtered-out-file-type name="Solution File" />
+      <filtered-out-file-type name="SQL" />
+      <filtered-out-file-type name="SVG" />
+      <filtered-out-file-type name="T4" />
+      <filtered-out-file-type name="textmate" />
+      <filtered-out-file-type name="UnityYaml" />
+      <filtered-out-file-type name="UXML" />
+      <filtered-out-file-type name="Vbproj" />
+      <filtered-out-file-type name="Vcxproj" />
+      <filtered-out-file-type name="Visual Basic" />
+      <filtered-out-file-type name="WIX file" />
+      <filtered-out-file-type name="WIX project" />
+      <filtered-out-file-type name="Xaml" />
+      <filtered-out-file-type name="XHTML" />
+      <filtered-out-file-type name="XML" />
+      <filtered-out-file-type name="Xproj" />
+      <filtered-out-file-type name="YAML" />
+      <filtered-out-file-type name="ARCHIVE" />
+      <filtered-out-file-type name="Binary" />
+      <filtered-out-file-type name="GraphView" />
+      <filtered-out-file-type name="Image" />
+      <filtered-out-file-type name="Native" />
+      <filtered-out-file-type name="ResourceBundle" />
+      <filtered-out-file-type name="UML" />
+      <filtered-out-file-type name="UNKNOWN" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/59819BE1-42C3-4115-ADE6-88F6962021F1/33/65bcc12b/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/FSMTests.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FSM.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kezwkDzzVfC3Ljd8JE0WiDeo6a" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35026455" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9628">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="9628" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c320375d-bcd9-405a-88e1-b3bf3e9f0468" name="Default Changelist" comment="" />
+      <created>1606076086842</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606076086842</updated>
+      <workItem from="1606076091480" duration="5515000" />
+      <workItem from="1606118705652" duration="2711000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1921" height="419" key="GridCell.Tab.0.bottom" timestamp="1606121418661">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.0.bottom/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418661" />
+    <state width="1921" height="419" key="GridCell.Tab.0.center" timestamp="1606121418661">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.0.center/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418661" />
+    <state width="1921" height="419" key="GridCell.Tab.0.left" timestamp="1606121418661">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.0.left/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418661" />
+    <state width="1921" height="419" key="GridCell.Tab.0.right" timestamp="1606121418661">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.0.right/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418661" />
+    <state width="1921" height="419" key="GridCell.Tab.1.bottom" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.1.bottom/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.1.center" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.1.center/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.1.left" timestamp="1606121418661">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.1.left/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418661" />
+    <state width="1921" height="419" key="GridCell.Tab.1.right" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.1.right/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.2.bottom" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.2.bottom/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.2.center" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.2.center/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.2.left" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.2.left/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.2.right" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.2.right/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.3.bottom" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.3.bottom/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.3.center" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.3.center/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.3.left" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.3.left/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="1921" height="419" key="GridCell.Tab.3.right" timestamp="1606121418662">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1921" height="419" key="GridCell.Tab.3.right/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606121418662" />
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1606076232438">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup/0.0.1536.834@0.0.1536.834" timestamp="1606076232438" />
+    <state x="2459" y="201" width="840" height="878" key="search.everywhere.popup" timestamp="1606119357908">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2459" y="201" width="840" height="878" key="search.everywhere.popup/0.0.1536.834/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606119357908" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1606076261714" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Editor/FSMTests.cs</url>
+          <line>118</line>
+          <properties documentPath="C:\MyCode\FSM\Assets\Scripts\Editor\FSMTests.cs" initialLine="89">
+            <startOffsets>
+              <option value="4201" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4235" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
