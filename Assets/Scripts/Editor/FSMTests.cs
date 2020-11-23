@@ -158,9 +158,9 @@ namespace Tests
             
             FSM.GoToState<StateA>();
             
-            Assert.IsTrue(enteredList[0] == stateA);
-            Assert.IsTrue(enteredList[1] == subStateX);
-            Assert.IsTrue(enteredList[2] == subSubStateU);
+            Assert.AreEqual(stateA, enteredList[0]);
+            Assert.AreEqual(subStateX, enteredList[1]);
+            Assert.AreEqual(subSubStateU, enteredList[2]);
         }
         
         [Test]
@@ -201,7 +201,70 @@ namespace Tests
             Assert.IsTrue(exitedList[2] == stateA);
         }
         
+        public class SuperState : FSM.State {
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public SuperState(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
+        }
         
+        [Test]
+        public void SwitchStateTreeWithCommonParent()
+        {
+            var superState = new SuperState(enteredList, exitedList);
+            var stateA = new StateA(enteredList, exitedList);
+            var subStateX = new SubStateX(enteredList, exitedList);
+            var subSubStateU = new SubSubStateU(enteredList, exitedList);
+            
+            var stateB = new StateB(enteredList, exitedList);
+            var subStateZ = new SubStateZ(enteredList, exitedList);
+            var subSubStateV = new SubSubStateV(enteredList, exitedList);
+
+            FSM.LoadState(superState);
+            
+            FSM.LoadState(stateA);
+            FSM.LoadState(subStateX);
+            FSM.LoadState(subSubStateU);
+            
+            FSM.LoadState(stateB);
+            FSM.LoadState(subStateZ);
+            FSM.LoadState(subSubStateV);
+            
+            // Branch A
+            FSM.SetSubState<SuperState, StateA>();
+            FSM.SetSubState<StateA, SubStateX>();
+            FSM.SetSubState<SubStateX, SubSubStateU>();
+            
+            //Branch B
+            FSM.SetSubState<SuperState, StateB>();
+            FSM.SetSubState<StateB, SubStateZ>();
+            FSM.SetSubState<SubStateZ, SubSubStateV>();
+            
+            FSM.GoToState<SuperState>();
+            
+            Assert.IsTrue(FSM.CurrentState == subSubStateU);
+            
+            enteredList.Clear();
+            
+            FSM.GoToState<SubSubStateV>();
+            // Make sure all states has been exited, except the superstate which is the common parent.
+            Assert.AreEqual(3, exitedList.Count);
+            Assert.AreEqual(subSubStateU, exitedList[0]);
+            Assert.AreEqual(subStateX ,exitedList[1]);
+            Assert.AreEqual(stateA, exitedList[2]);
+            
+            // Make sure only the subbranch has been entered
+            Assert.AreEqual(3, enteredList.Count);
+            Assert.AreEqual(stateB, enteredList[0]);
+            Assert.AreEqual(subStateZ, enteredList[1]);
+            Assert.AreEqual(subSubStateV, enteredList[2]);
+            
+        }        
 
 
     }

@@ -32,17 +32,42 @@ public static class FSM {
     public static void GoToState<T>() where T : State  {
         State newState = states[typeof(T)];
 
+        
+        State targetParent = newState.parent;
         if (CurrentState != null) {
+
+            
             CurrentState.Exit();
             State parentState = CurrentState.parent;
-            while (parentState != null) {
+            //State targetParent = newState.parent;
+            
+            while (parentState != targetParent) {
+                if(parentState == targetParent) {
+                    break;
+                }
+
+                if(targetParent?.parent != null) {
+                    targetParent = targetParent.parent;
+                }
+
                 parentState.Exit();
                 parentState = parentState.parent;
             }            
         }
 
         CurrentState = newState;
-        CurrentState.Enter();
+        Stack<State> enterStack = new Stack<State>();
+        while (CurrentState != targetParent) {
+            enterStack.Push(CurrentState);
+            CurrentState = CurrentState.parent;
+        }
+
+        while (enterStack.Count > 0) {
+            CurrentState = enterStack.Pop();
+            CurrentState.Enter();
+        }
+        
+        //CurrentState.Enter();
         
         while (CurrentState.DefaultSubState != null) {
             CurrentState.DefaultSubState.Enter();
