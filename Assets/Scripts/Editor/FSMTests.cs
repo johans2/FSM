@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -8,68 +9,109 @@ namespace Tests
 {
     public class FSMTests
     {
+        
+        public List<FSM.State> enteredList = new List<FSM.State>();
+        public List<FSM.State> exitedList = new List<FSM.State>();
+        
         public class StateA : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public StateA(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
         
         public class StateB : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public StateB(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
         
         public class SubStateX : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public SubStateX(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
         
         public class SubStateY : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public SubStateY(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
         
         public class SubStateZ : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public SubStateZ(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
         
         public class SubSubStateV : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public SubSubStateV(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
 
         public class SubSubStateU : FSM.State {
-            public bool enterCalled = false;
-            public bool exitCalled = false;
-            public override void Enter() { enterCalled = true; }
-            public override void Exit() { exitCalled = true; }
+            public List<FSM.State> enteredList;
+            public List<FSM.State> exitedList;
+            
+            public SubSubStateU(List<FSM.State> enteredList, List<FSM.State> exitedList) {
+                this.enteredList = enteredList;
+                this.exitedList = exitedList;
+            }
+            public override void Enter() { enteredList.Add(this); }
+            public override void Exit() { exitedList.Add(this); }
         }
 
         
         [SetUp]
         public void Setup() {
             FSM.Clear();
+            enteredList.Clear();
+            exitedList.Clear();
         }
         
         [Test]
         public void SetupStateHirarchy()
         {
-            var stateA = new StateA();
-            var subStateX = new SubStateX();
-            var subStateY = new SubStateY();
-            var subSubStateU = new SubSubStateU();
+            var stateA = new StateA(enteredList, exitedList);
+            var subStateX = new SubStateX(enteredList, exitedList);
+            var subStateY = new SubStateY(enteredList, exitedList);
+            var subSubStateU = new SubSubStateU(enteredList, exitedList);
             
             FSM.LoadState(stateA);
             FSM.LoadState(subStateX);
@@ -100,10 +142,10 @@ namespace Tests
         [Test]
         public void EnterStateHirarchy()
         {
-            var stateA = new StateA();
-            var subStateX = new SubStateX();
-            var subStateY = new SubStateY();
-            var subSubStateU = new SubSubStateU();
+            var stateA = new StateA(enteredList, exitedList);
+            var subStateX = new SubStateX(enteredList, exitedList);
+            var subStateY = new SubStateY(enteredList, exitedList);
+            var subSubStateU = new SubSubStateU(enteredList, exitedList);
             
             FSM.LoadState(stateA);
             FSM.LoadState(subStateX);
@@ -116,22 +158,22 @@ namespace Tests
             
             FSM.GoToState<StateA>();
             
-            Assert.IsTrue(stateA.enterCalled);
-            Assert.IsTrue(subStateX.enterCalled);
-            Assert.IsTrue(subSubStateU.enterCalled);
+            Assert.IsTrue(enteredList[0] == stateA);
+            Assert.IsTrue(enteredList[1] == subStateX);
+            Assert.IsTrue(enteredList[2] == subSubStateU);
         }
         
         [Test]
         public void ExitStateHirarchy()
         {
-            var stateA = new StateA();
-            var subStateX = new SubStateX();
-            var subStateY = new SubStateY();
-            var subSubStateU = new SubSubStateU();
+            var stateA = new StateA(enteredList, exitedList);
+            var subStateX = new SubStateX(enteredList, exitedList);
+            var subStateY = new SubStateY(enteredList, exitedList);
+            var subSubStateU = new SubSubStateU(enteredList, exitedList);
             
-            var stateB = new StateB();
-            var subStateZ = new SubStateZ();
-            var subSubStateV = new SubSubStateV();
+            var stateB = new StateB(enteredList, exitedList);
+            var subStateZ = new SubStateZ(enteredList, exitedList);
+            var subSubStateV = new SubSubStateV(enteredList, exitedList);
 
             FSM.LoadState(stateA);
             FSM.LoadState(subStateX);
@@ -154,13 +196,9 @@ namespace Tests
             FSM.GoToState<StateA>();
             
             FSM.GoToState<StateB>();
-            Assert.IsTrue(subSubStateU.exitCalled);
-            Assert.IsTrue(subStateX.exitCalled);
-            Assert.IsTrue(stateA.exitCalled);
-            
-            Assert.IsTrue(stateB.enterCalled);
-            Assert.IsTrue(subStateZ.enterCalled);
-            Assert.IsTrue(subSubStateV.enterCalled);
+            Assert.IsTrue(exitedList[0] == subSubStateU);
+            Assert.IsTrue(exitedList[1] == subStateX);
+            Assert.IsTrue(exitedList[2] == stateA);
         }
         
         
