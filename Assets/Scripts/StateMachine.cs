@@ -54,14 +54,6 @@ namespace SM {
     }
 
     public abstract class State : StateMachine {
-        protected override void Enter() {
-        }
-
-        protected override void Update() {
-        }
-
-        protected override void Exit() {
-        }
     }
 
     public class Game : StateMachine {
