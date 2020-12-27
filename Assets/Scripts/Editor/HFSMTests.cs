@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using SM;
+using HFSM;
 
 namespace Tests  {
     
@@ -84,7 +84,7 @@ namespace Tests  {
             
             game.EnterStateMachine();
             callChain.Clear();
-            
+
             game.GoToState<StateB>();
             Assert.AreEqual(4, callChain.Count);
             Assert.AreEqual("stateA1_exit", callChain[0]);

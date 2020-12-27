@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SM {
-    
+namespace HFSM {
     
     public abstract class StateMachine {
 
@@ -29,14 +28,11 @@ namespace SM {
             Exit();
         }
 
-        protected virtual void Enter() {
-        }
+        protected virtual void Enter() { }
         
-        protected virtual void Update() {
-        }
+        protected virtual void Update() { }
         
-        protected virtual void Exit() {
-        }
+        protected virtual void Exit() { }
 
         public void GoToState<T>() where T : State {
             currentState?.ExitStateMachine();
@@ -53,10 +49,6 @@ namespace SM {
         }
     }
 
-    public abstract class State : StateMachine {
-    }
+    public abstract class State : StateMachine { }
 
-    public class Game : StateMachine {
-        
-    }
 }
