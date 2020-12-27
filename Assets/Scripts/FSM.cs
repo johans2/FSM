@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+/*
 public static class FSM {
 
     public abstract class State {
@@ -107,4 +107,5 @@ public static class FSM {
 public class FSMException : Exception {
     public FSMException(string msg) : base(msg) { }
 }
+*/
 

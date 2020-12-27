@@ -2,11 +2,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using SM;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
 namespace Tests
 {
+
+    public class Game : StateMachine {
+        protected override void Enter() {
+            Debug.Log("enter game");
+        }
+
+        protected override void Update() {
+            Debug.Log("update game");
+        }
+    }
+
+    public class StateA : State {
+        protected override void Enter() {
+            Debug.Log("enter state A");
+        }
+
+        protected override void Update() {
+            Debug.Log("update state A");
+        }
+
+        protected override void Exit() {
+            Debug.Log("exit state A");
+        }
+    }
+
+    public class StateA2 : State {
+        protected override void Enter() {
+            Debug.Log("enter state A2");
+        }
+
+        protected override void Update() {
+            Debug.Log("update state A2");
+        }
+
+        protected override void Exit() {
+            Debug.Log("exit state A2");
+        }
+    }
+    
+    public class StateA3 : State {
+        protected override void Enter() {
+            Debug.Log("enter state A3");
+        }
+
+        protected override void Update() {
+            Debug.Log("update state A3");
+        }
+
+        protected override void Exit() {
+            Debug.Log("exit state A3");
+        }
+    }
+    
+    public class SMTests {
+        [Test]
+        public void EnterSM() {
+            
+            Game game = new Game();
+            StateA stateA = new StateA();
+            StateA2 stateA2 = new StateA2();
+            StateA3 stateA3 = new StateA3();
+            
+            game.LoadState(stateA);
+            stateA.LoadState(stateA2);   
+            stateA2.LoadState(stateA3);
+            
+            game.EnterStateMachine();
+            game.UpdateStateMachine();
+        }
+
+
+    }
+
+    /*
     public class FSMTests
     {
         
@@ -268,4 +344,5 @@ namespace Tests
 
 
     }
+    */
 }
