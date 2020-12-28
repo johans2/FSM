@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using HFSM;
-using UnityEngine;
 
 namespace Tests  {
     
@@ -103,7 +101,7 @@ namespace Tests  {
             int AtoB = 1;
             game.LoadSubState(stateA);
             game.LoadSubState(stateB);
-            game.CreateTransition(stateA, stateB, AtoB);
+            game.AddTransition(stateA, stateB, AtoB);
             
             game.EnterStateMachine();
             game.SendTrigger(AtoB);
@@ -120,52 +118,35 @@ namespace Tests  {
             Game game = new Game();
             StateA stateA = new StateA();
             StateA1 stateA1 = new StateA1();
+            StateA2 stateA2 = new StateA2();
             StateB stateB = new StateB();
             StateB1 stateB1 = new StateB1();
+            StateB2 stateB2 = new StateB2();
 
             int AtoB = 1;
             game.LoadSubState(stateA);
             game.LoadSubState(stateB);
-            game.CreateTransition(stateA, stateB, AtoB);
-            
             stateA.LoadSubState(stateA1);
             stateB.LoadSubState(stateB1);
+            stateA1.LoadSubState(stateA2);
+            stateB1.LoadSubState(stateB2);
+            
+            game.AddTransition(stateA, stateB, AtoB);
             
             game.EnterStateMachine();
-            stateA1.SendTrigger(AtoB);
+            stateA2.SendTrigger(AtoB);
             
-            Assert.AreEqual(7, callChain.Count);
+            Assert.AreEqual(10, callChain.Count);
             Assert.AreEqual("game_enter", callChain[0]);
             Assert.AreEqual("stateA_enter", callChain[1]);
             Assert.AreEqual("stateA1_enter", callChain[2]);
-            Assert.AreEqual("stateA1_exit", callChain[3]);
-            Assert.AreEqual("stateA_exit", callChain[4]);
-            Assert.AreEqual("stateB_enter", callChain[5]);
-            Assert.AreEqual("stateB1_enter", callChain[6]);
-        }
-        
-        [Test]
-        public void GetStateHashCode() {
-            Game game = new Game();
-            StateA stateA = new StateA();
-            StateA1 stateA1 = new StateA1();
-            StateB stateB = new StateB();
-            StateB1 stateB1 = new StateB1();
-
-            List<int> hashCodes = new List<int> {
-                game.GetHashCode(),
-                stateA.GetHashCode(),
-                stateA1.GetHashCode(),
-                stateB.GetHashCode(),
-                stateB1.GetHashCode()
-            };
-
-            int first = hashCodes[0];
-            for (int i = 1; i < hashCodes.Count; i++) {
-                Assert.AreNotEqual(first, hashCodes[i]);
-                Debug.Log(hashCodes[i]);
-            }
-
+            Assert.AreEqual("stateA2_enter", callChain[3]);
+            Assert.AreEqual("stateA2_exit", callChain[4]);
+            Assert.AreEqual("stateA1_exit", callChain[5]);
+            Assert.AreEqual("stateA_exit", callChain[6]);
+            Assert.AreEqual("stateB_enter", callChain[7]);
+            Assert.AreEqual("stateB1_enter", callChain[8]);
+            Assert.AreEqual("stateB2_enter", callChain[9]);
         }
         
     }

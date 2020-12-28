@@ -1,39 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
 
 namespace HFSM {
     
     public abstract class StateMachine {
-        
-        private class Transition{
-            public readonly State from;
-            public readonly State to;
-            private readonly int trigger;
-
-            public Transition(State from, State to, int trigger) {
-                this.from = from;
-                this.to = to;
-                this.trigger = trigger;
-            }
-
-            public override int GetHashCode() {
-                return (from.GetHashCode(), to.GetHashCode(), trigger.GetHashCode()).GetHashCode();
-            }
-
-            public override string ToString() {
-                return $"[{from} -> {to}]";
-            }
-        }
         
         private State currentSubState;
         private State defaultSubState;
         private StateMachine parent;
         
         private Dictionary<Type, State> subStates = new Dictionary<Type, State>();
-        private Dictionary<int, Transition> transitions = new Dictionary<int, Transition>(); // TODO: key should not be the trigger, but a hash from key, from and to
-        
+        private Dictionary<int, State> transitions = new Dictionary<int, State>();
+
         public void EnterStateMachine() {
             Enter();
             if (currentSubState == null && defaultSubState != null) {
@@ -81,13 +59,8 @@ namespace HFSM {
             subStates.Add(subState.GetType(), subState);
         }
         
-        public void CreateTransition(State from, State to, int trigger) {
-            Transition transion = new Transition(from, to, trigger);
-            int transitionKey = transion.GetHashCode();
-            if (transitions.ContainsKey(transitionKey)) {
-                throw new FSMException($"StateMachine {this} already has a trigger defined from state {from} to state {to} with trigger {trigger}");
-            }
-            transitions.Add(transitionKey, transion);
+        public void AddTransition(State from, State to, int trigger) {
+            from.transitions.Add(trigger, to);
         }
 
         public void SendTrigger(int trigger) {
@@ -97,10 +70,8 @@ namespace HFSM {
             }
 
             while (root != null) {
-                // TODO: this lookup failes atm. Need a better way to identify transitions.
-                if (root.transitions.TryGetValue(trigger, out Transition transition)) {
-                    ValidateTransition(root, transition);
-                    root.ChangeSubState(transition.to);
+                if (root.transitions.TryGetValue(trigger, out State toState)) {
+                    root.parent?.ChangeSubState(toState);
                     return;
                 }
 
@@ -108,18 +79,6 @@ namespace HFSM {
             }
             
             throw new FSMException($"Trigger {trigger} was not consumed by any transition!");
-        }
-
-        private static void ValidateTransition(StateMachine root, Transition transition) {
-            if (!root.subStates.ContainsKey(transition.@from.GetType())) {
-                throw new FSMException(
-                    $"StateMachine {root} has transition defined {transition} but has no substate {transition.@from}");
-            }
-
-            if (!root.subStates.ContainsKey(transition.to.GetType())) {
-                throw new FSMException(
-                    $"StateMachine {root} has transition defined {transition} but has no substate {transition.to}");
-            }
         }
     }
 
