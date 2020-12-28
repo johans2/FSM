@@ -2,7 +2,7 @@
 
 namespace Tests {
     
-    public class Game : StateMachine {
+    public class Game : State {
         protected override void Enter() {
             HFSMTests.AddLogCall("game_enter");
         }
