@@ -5,50 +5,36 @@ namespace HFSM {
     
     public abstract class StateMachine {
         
-        private State currentSubState;
-        private State defaultSubState;
+        private StateMachine currentSubState;
+        private StateMachine defaultSubState;
         private StateMachine parent;
         
         private Dictionary<Type, State> subStates = new Dictionary<Type, State>();
         private Dictionary<int, State> transitions = new Dictionary<int, State>();
 
-        public void EnterStateMachine() {
-            Enter();
+        public void Enter() {
+            OnEnter();
             if (currentSubState == null && defaultSubState != null) {
                 currentSubState = defaultSubState;
             }
-            currentSubState?.EnterStateMachine();
+            currentSubState?.Enter();
         }
 
-        public void UpdateStateMachine() {
-            Update();
-            currentSubState?.UpdateStateMachine();
+        public void Update() {
+            OnUpdate();
+            currentSubState?.Update();
         }
 
-        public void ExitStateMachine() {
-            currentSubState?.ExitStateMachine();
-            Exit();
+        public void Exit() {
+            currentSubState?.Exit();
+            OnExit();
         }
 
-        protected virtual void Enter() { }
+        protected virtual void OnEnter() { }
         
-        protected virtual void Update() { }
+        protected virtual void OnUpdate() { }
         
-        protected virtual void Exit() { }
-
-        public void ChangeSubState<T>() where T : State {
-            currentSubState?.ExitStateMachine();
-            var newState = subStates[typeof(T)];
-            currentSubState = newState;
-            newState.EnterStateMachine();
-        }
-
-        public void ChangeSubState(State state) {
-            currentSubState?.ExitStateMachine();
-            var newState = subStates[state.GetType()];
-            currentSubState = newState;
-            newState.EnterStateMachine();
-        }
+        protected virtual void OnExit() { }
 
         public void LoadSubState(State subState) {
             if (subStates.Count == 0) {
@@ -80,15 +66,22 @@ namespace HFSM {
             
             throw new FSMException($"Trigger {trigger} was not consumed by any transition!");
         }
+        
+        private void ChangeSubState(State state) {
+            currentSubState?.Exit();
+            var newState = subStates[state.GetType()];
+            currentSubState = newState;
+            newState.Enter();
+        }
+
     }
 
     public abstract class State : StateMachine {
-        public override int GetHashCode() {
-            return GetType().ToString().GetHashCode();
-        }
+        private new void Update() { }
+        private new void Enter() { }
+        private new void Exit() { }
     }
-    
-    
+
     public class FSMException : Exception {
         public FSMException(string msg) : base(msg) { }
     }
