@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using HFSM;
 using NUnit.Framework;
+using UnityEditor.UIElements;
 
 namespace Tests  {
     
@@ -117,5 +119,69 @@ namespace Tests  {
             Assert.AreEqual("stateB2_enter", callChain[9]);
         }
         
+        [Test]
+        public void ThrowsExceptionOnDuplicateStateAdded() {
+            Game game = new Game();
+            StateA stateA = new StateA();
+            StateA1 stateA1 = new StateA1();
+            StateA2 stateA2 = new StateA2();
+            StateB stateB = new StateB();
+            StateB1 stateB1 = new StateB1();
+            StateB2 stateB2 = new StateB2();
+            StateB2 stateB2Duplicate = new StateB2();
+
+            Assert.Throws<DuplicateSubStateException>(() => {
+                game.LoadSubState(stateA);
+                game.LoadSubState(stateB);
+                stateA.LoadSubState(stateA1);
+                stateB.LoadSubState(stateB1);
+                stateA1.LoadSubState(stateA2);
+                stateB1.LoadSubState(stateB2);       
+                stateB1.LoadSubState(stateB2Duplicate);
+            });
+        }
+
+        [Test]
+        public void ThrowsExceptionOnDuplicateTransitionAdded() {
+            Game game = new Game();
+            StateA stateA = new StateA();
+            StateA1 stateA1 = new StateA1();
+            StateB stateB = new StateB();
+            
+            game.LoadSubState(stateA);
+            game.LoadSubState(stateB);
+            game.LoadSubState(stateA1);
+
+            int TRANSITION = 1;
+                
+            game.AddTransition(stateA, stateB, TRANSITION);
+            
+            Assert.Throws<DuplicateTransitionException>(() => {
+                game.AddTransition(stateA, stateA1, TRANSITION);
+            });
+        }
+        
+        [Test]
+        public void ThrowsExceptionOnNeglectedTrigger() {
+            Game game = new Game();
+            StateA stateA = new StateA();
+            StateA1 stateA1 = new StateA1();
+            StateB stateB = new StateB();
+            
+            game.LoadSubState(stateA);
+            game.LoadSubState(stateB);
+            game.LoadSubState(stateA1);
+
+            int TRIGGER_1 = 1;
+            int TRIGGER_2_NEVER_ADDED = 2; 
+                
+            game.AddTransition(stateA, stateB, TRIGGER_1);
+                
+            game.Enter();
+            
+            Assert.Throws<NeglectedTriggerException>(() => {
+                game.SendTrigger(TRIGGER_2_NEVER_ADDED);
+            });
+        }
     }
 }

@@ -42,11 +42,23 @@ namespace HFSM {
             }
 
             subState.parent = this;
-            subStates.Add(subState.GetType(), subState);
+            try {
+                subStates.Add(subState.GetType(), subState);
+            }
+            catch (ArgumentException) {
+                throw new DuplicateSubStateException($"State {GetType()} already contains a substate of type {subState.GetType()}");
+            }
+            
         }
         
         public void AddTransition(State from, State to, int trigger) {
-            from.transitions.Add(trigger, to);
+            try {
+                from.transitions.Add(trigger, to);
+            }
+            catch (ArgumentException) {
+                throw new DuplicateTransitionException($"State {from} already has a transition defined for trigger {trigger}");
+            }
+
         }
 
         public void SendTrigger(int trigger) {
@@ -64,7 +76,7 @@ namespace HFSM {
                 root = root.currentSubState;
             }
             
-            throw new FSMException($"Trigger {trigger} was not consumed by any transition!");
+            throw new NeglectedTriggerException($"Trigger {trigger} was not consumed by any transition!");
         }
         
         private void ChangeSubState(State state) {
@@ -73,17 +85,21 @@ namespace HFSM {
             currentSubState = newState;
             newState.Enter();
         }
-
     }
 
     public abstract class State : StateMachine {
-        private new void Update() { }
-        private new void Enter() { }
-        private new void Exit() { }
     }
 
-    public class FSMException : Exception {
-        public FSMException(string msg) : base(msg) { }
+    public class DuplicateSubStateException : Exception {
+        public DuplicateSubStateException(string msg) : base(msg) { }
+    }
+
+    public class DuplicateTransitionException : Exception {
+        public DuplicateTransitionException(string msg) : base(msg) { }
+    }
+    
+    public class NeglectedTriggerException : Exception {
+        public NeglectedTriggerException(string msg) : base(msg) { }
     }
 
 }
