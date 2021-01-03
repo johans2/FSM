@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace HFSM {
     
-    public abstract class State {
+    public abstract class StateMachine {
         
-        private State currentSubState;
-        private State defaultSubState;
-        private State parent;
+        private StateMachine currentSubState;
+        private StateMachine defaultSubState;
+        private StateMachine parent;
         
-        private Dictionary<Type, State> subStates = new Dictionary<Type, State>();
-        private Dictionary<int, State> transitions = new Dictionary<int, State>();
+        private Dictionary<Type, StateMachine> subStates = new Dictionary<Type, StateMachine>();
+        private Dictionary<int, StateMachine> transitions = new Dictionary<int, StateMachine>();
 
         public void EnterStateMachine() {
             OnEnter();
@@ -36,7 +36,7 @@ namespace HFSM {
         
         protected virtual void OnExit() { }
 
-        public void LoadSubState(State subState) {
+        public void LoadSubState(StateMachine subState) {
             if (subStates.Count == 0) {
                 defaultSubState = subState;
             }
@@ -51,7 +51,7 @@ namespace HFSM {
             
         }
         
-        public void AddTransition(State from, State to, int trigger) {
+        public void AddTransition(StateMachine from, StateMachine to, int trigger) {
             try {
                 from.transitions.Add(trigger, to);
             }
@@ -68,7 +68,7 @@ namespace HFSM {
             }
 
             while (root != null) {
-                if (root.transitions.TryGetValue(trigger, out State toState)) {
+                if (root.transitions.TryGetValue(trigger, out StateMachine toState)) {
                     root.parent?.ChangeSubState(toState);
                     return;
                 }
@@ -79,7 +79,7 @@ namespace HFSM {
             throw new NeglectedTriggerException($"Trigger {trigger} was not consumed by any transition!");
         }
         
-        private void ChangeSubState(State state) {
+        private void ChangeSubState(StateMachine state) {
             currentSubState?.ExitStateMachine();
             var newState = subStates[state.GetType()];
             currentSubState = newState;

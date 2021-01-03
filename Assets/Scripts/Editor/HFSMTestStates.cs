@@ -2,7 +2,7 @@
 
 namespace Tests {
     
-    public class Game : State {
+    public class Game : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("game_enter");
         }
@@ -12,7 +12,7 @@ namespace Tests {
         }
     }
     
-    public class StateA : State {
+    public class StateA : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateA_enter");
         }
@@ -26,7 +26,7 @@ namespace Tests {
         }
     }
     
-    public class StateA1 : State {
+    public class StateA1 : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateA1_enter");
         }
@@ -40,7 +40,7 @@ namespace Tests {
         }
     }
 
-    public class StateA2 : State {
+    public class StateA2 : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateA2_enter");
         }
@@ -54,7 +54,7 @@ namespace Tests {
         }
     }
 
-    public class StateA3 : State {
+    public class StateA3 : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateA3_enter");
         }
@@ -68,7 +68,7 @@ namespace Tests {
         }
     }
     
-    public class StateB : State {
+    public class StateB : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateB_enter");
         }
@@ -82,7 +82,7 @@ namespace Tests {
         }
     }
     
-    public class StateB1 : State {
+    public class StateB1 : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateB1_enter");
         }
@@ -96,7 +96,7 @@ namespace Tests {
         }
     }
 
-    public class StateB2 : State {
+    public class StateB2 : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateB2_enter");
         }
@@ -110,7 +110,7 @@ namespace Tests {
         }
     }
 
-    public class StateB3 : State {
+    public class StateB3 : StateMachine {
         protected override void OnEnter() {
             HFSMTests.AddLogCall("stateB3_enter");
         }
