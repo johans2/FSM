@@ -3,30 +3,30 @@ using System.Collections.Generic;
 
 namespace HFSM {
     
-    public abstract class StateMachine {
+    public abstract class State {
         
-        private StateMachine currentSubState;
-        private StateMachine defaultSubState;
-        private StateMachine parent;
+        private State currentSubState;
+        private State defaultSubState;
+        private State parent;
         
         private Dictionary<Type, State> subStates = new Dictionary<Type, State>();
         private Dictionary<int, State> transitions = new Dictionary<int, State>();
 
-        public void Enter() {
+        public void EnterStateMachine() {
             OnEnter();
             if (currentSubState == null && defaultSubState != null) {
                 currentSubState = defaultSubState;
             }
-            currentSubState?.Enter();
+            currentSubState?.EnterStateMachine();
         }
 
-        public void Update() {
+        public void UpdateStateMachine() {
             OnUpdate();
-            currentSubState?.Update();
+            currentSubState?.UpdateStateMachine();
         }
 
-        public void Exit() {
-            currentSubState?.Exit();
+        public void ExitStateMachine() {
+            currentSubState?.ExitStateMachine();
             OnExit();
         }
 
@@ -80,26 +80,10 @@ namespace HFSM {
         }
         
         private void ChangeSubState(State state) {
-            currentSubState?.Exit();
+            currentSubState?.ExitStateMachine();
             var newState = subStates[state.GetType()];
             currentSubState = newState;
-            newState.Enter();
+            newState.EnterStateMachine();
         }
     }
-
-    public abstract class State : StateMachine {
-    }
-
-    public class DuplicateSubStateException : Exception {
-        public DuplicateSubStateException(string msg) : base(msg) { }
-    }
-
-    public class DuplicateTransitionException : Exception {
-        public DuplicateTransitionException(string msg) : base(msg) { }
-    }
-    
-    public class NeglectedTriggerException : Exception {
-        public NeglectedTriggerException(string msg) : base(msg) { }
-    }
-
 }

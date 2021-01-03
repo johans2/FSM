@@ -31,7 +31,7 @@ namespace Tests  {
             stateA.LoadSubState(stateA2);   
             stateA.LoadSubState(stateA3);
             
-            game.Enter();
+            game.EnterStateMachine();
             
             Assert.AreEqual(3, callChain.Count);
             Assert.AreEqual("game_enter", callChain[0]);
@@ -52,10 +52,10 @@ namespace Tests  {
             stateA.LoadSubState(stateA2);   
             stateA.LoadSubState(stateA3);
             
-            game.Enter();
+            game.EnterStateMachine();
             callChain.Clear();
             
-            game.Update();
+            game.UpdateStateMachine();
             Assert.AreEqual(3, callChain.Count);
             Assert.AreEqual("game_update", callChain[0]);
             Assert.AreEqual("stateA_update", callChain[1]);
@@ -73,7 +73,7 @@ namespace Tests  {
             game.LoadSubState(stateB);
             game.AddTransition(stateA, stateB, AtoB);
             
-            game.Enter();
+            game.EnterStateMachine();
             game.SendTrigger(AtoB);
             
             Assert.AreEqual(4, callChain.Count);
@@ -103,7 +103,7 @@ namespace Tests  {
             
             game.AddTransition(stateA, stateB, AtoB);
             
-            game.Enter();
+            game.EnterStateMachine();
             stateA2.SendTrigger(AtoB);
             
             Assert.AreEqual(10, callChain.Count);
@@ -177,7 +177,7 @@ namespace Tests  {
                 
             game.AddTransition(stateA, stateB, TRIGGER_1);
                 
-            game.Enter();
+            game.EnterStateMachine();
             
             Assert.Throws<NeglectedTriggerException>(() => {
                 game.SendTrigger(TRIGGER_2_NEVER_ADDED);
