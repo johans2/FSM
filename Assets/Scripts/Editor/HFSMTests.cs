@@ -183,5 +183,41 @@ namespace Tests  {
                 game.SendTrigger(TRIGGER_2_NEVER_ADDED);
             });
         }
+        
+        [Test]
+        public void ThrowsExceptionOnInvalidFromTransition() {
+            Game game = new Game();
+            StateA stateA = new StateA();
+            StateA1 stateA1 = new StateA1();
+            StateB stateB = new StateB();
+            
+            game.LoadSubState(stateA);
+            game.LoadSubState(stateB);
+            stateA.LoadSubState(stateA1);
+
+            int TRIGGER = 1;
+            
+            Assert.Throws<InvalidTransitionException>(() => {
+                stateA.AddTransition(stateA1, stateB, TRIGGER);    
+            });
+        }
+        
+        [Test]
+        public void ThrowsExceptionOnInvalidToTransition() {
+            Game game = new Game();
+            StateA stateA = new StateA();
+            StateA1 stateA1 = new StateA1();
+            StateB stateB = new StateB();
+            
+            game.LoadSubState(stateA);
+            game.LoadSubState(stateB);
+            stateA.LoadSubState(stateA1);
+
+            int TRIGGER = 1;
+            
+            Assert.Throws<InvalidTransitionException>(() => {
+                stateA.AddTransition(stateA1, stateB, TRIGGER);    
+            });
+        }
     }
 }

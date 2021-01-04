@@ -52,6 +52,14 @@ namespace HFSM {
         }
         
         public void AddTransition(StateMachine from, StateMachine to, int trigger) {
+            if (!subStates.TryGetValue(from.GetType(), out _)) {
+                throw new InvalidTransitionException($"State {GetType()} does not have a substate of type {from.GetType()} to transition from.");
+            }
+            
+            if (!subStates.TryGetValue(to.GetType(), out _)) {
+                throw new InvalidTransitionException($"State {GetType()} does not have a substate of type {to.GetType()} to transition from.");
+            }
+            
             try {
                 from.transitions.Add(trigger, to);
             }
